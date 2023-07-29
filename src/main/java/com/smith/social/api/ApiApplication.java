@@ -1,4 +1,4 @@
-package com.smith.social.api.api;
+package com.smith.social.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

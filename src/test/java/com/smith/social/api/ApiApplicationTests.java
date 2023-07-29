@@ -1,0 +1,32 @@
+package com.smith.social.api;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.smith.social.api.controllers.users.UsersController;
+import com.smith.social.api.repository.UsersRepo;
+import com.smith.social.api.services.users.UsersService;
+
+@SpringBootTest
+class ApiApplicationTests {
+
+	@Autowired
+	UsersController usersController;
+
+	@Autowired
+	UsersService usersService;
+
+	@Autowired
+	UsersRepo usersRepo;
+
+	@Test
+	void contextLoads() {
+		assertNotNull(usersController);
+		assertNotNull(usersService);
+		assertNotNull(usersRepo);
+	}
+
+}
