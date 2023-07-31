@@ -18,5 +18,13 @@ public class UsersService {
         List<Users> data = usersRepo.findAll();
         return null;
     }
+
+    public Object getUserById(int i) {
+        return null;
+    }
+
+    public Object updateUser(Users user) {
+        return null;
+    }
     
 }
