@@ -17,7 +17,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id; 
     private String username;
-    private String role;
+    private String userRole;
     private Timestamp created_at;
 
 }

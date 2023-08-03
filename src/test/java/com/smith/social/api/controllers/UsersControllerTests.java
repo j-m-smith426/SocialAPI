@@ -3,8 +3,6 @@ package com.smith.social.api.controllers;
 import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,9 @@ public class UsersControllerTests {
     @Test
     public void givenUsers_whenGetUsers_thenReturnJsonArray() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/all").contentType("application/json")).andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/all")
+                .contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     // getById
@@ -46,28 +46,35 @@ public class UsersControllerTests {
         Users user = new Users(5, "Bob", "user", new Timestamp(0));
         when(usersService.getUserById(5)).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}",5).contentType("application/json")).andExpectAll(
-        MockMvcResultMatchers.content().string(objectMapper.writeValueAsString(user)),
-        MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}",5)
+                .contentType("application/json"))
+                .andExpectAll(
+                    MockMvcResultMatchers.content().string(objectMapper.writeValueAsString(user)),
+                    MockMvcResultMatchers.status().isOk()
+                    );
     }
 
     //Validate add endpoint and functionality
     @Test
     public void whenValidInput_thenReturns200() throws Exception {
         Users user = new Users(0, "Bob", "user", new Timestamp(0));
-
+        when(usersService.addUser(user)).thenReturn(user);
         mockMvc.perform(MockMvcRequestBuilders.post("/user/add")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(user)))
-                        .andExpect(MockMvcResultMatchers.status().isOk());
+                        .andExpectAll(MockMvcResultMatchers.content().string(objectMapper.writeValueAsString(user)),
+                        MockMvcResultMatchers.status().isOk());
     }
 
     // update
     @Test
     public void givenUsers_whenUpdatingUsers_returnsUpdatedUser() throws Exception {
         Users user = new Users(5, "Bob", "user", new Timestamp(0));
+        
         when(usersService.updateUser(user)).thenReturn(user);
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/update").contentType("application/json"))
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/update")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(user)))
                         .andExpectAll(MockMvcResultMatchers.content().string(objectMapper.writeValueAsString(user)),
                         MockMvcResultMatchers.status().isOk());
     }
@@ -76,7 +83,9 @@ public class UsersControllerTests {
     @Test
     public void givenId_whenDeletingUsers_returns200() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/delete/{id}").contentType("application/json")).andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/delete/{id}", 5)
+                .contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
