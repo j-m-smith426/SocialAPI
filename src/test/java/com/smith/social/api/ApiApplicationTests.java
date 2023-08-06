@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
 import com.smith.social.api.controllers.users.UsersController;
+import com.smith.social.api.entities.Follows;
+import com.smith.social.api.entities.Posts;
 import com.smith.social.api.repository.UsersRepo;
 import com.smith.social.api.services.users.UsersService;
 
@@ -24,6 +26,12 @@ class ApiApplicationTests {
 
 	@Autowired
 	UsersRepo usersRepo;
+
+	@Autowired
+	Posts posts;
+
+	@Autowired
+	Follows follows;
 
 	@Test
 	void contextLoads() {
