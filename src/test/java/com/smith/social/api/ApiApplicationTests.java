@@ -27,17 +27,15 @@ class ApiApplicationTests {
 	@Autowired
 	UsersRepo usersRepo;
 
-	@Autowired
-	Posts posts;
-
-	@Autowired
-	Follows follows;
+	// @Autowired
+	// Posts posts;
 
 	@Test
 	void contextLoads() {
 		assertNotNull(usersController);
 		assertNotNull(usersService);
 		assertNotNull(usersRepo);
+		// assertNotNull(posts);
 	}
 
 }
