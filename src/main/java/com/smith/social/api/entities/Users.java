@@ -95,13 +95,13 @@ public class Users {
         this.posts.add(post);
     }
 
-    public Set<Follows> getFollowing() {
-        return following;
-    }
+    // public Set<Follows> getFollowing() {
+    //     return following;
+    // }
 
-    public void setFollowing(Set<Follows> following) {
-        this.following = following;
-    }
+    // public void setFollowing(Set<Follows> following) {
+    //     this.following = following;
+    // }
 
     // public Set<Follows> getFollowers() {
     //     return followers;
